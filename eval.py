@@ -17,7 +17,7 @@ from engine.logger import get_logger
 from seg_opr.metric import hist_info, compute_score
 from dataloader import AniSeg
 from dataloader import ValPre
-from network import Network
+
 
 try:
     from azureml.core import Run
@@ -157,6 +157,7 @@ if __name__ == "__main__":
     parser.add_argument('--val_src','-val',default="easy_val.txt",type = str)
     parser.add_argument('--aspp',default = False,action='store_true')
     parser.add_argument('--cls',default=16,type = int)
+    parser.add_argument('--only_c2p',default = False,action='store_true')
     
     args = parser.parse_args()
     all_dev = parse_devices(args.devices)
@@ -175,7 +176,13 @@ if __name__ == "__main__":
         os.makedirs( config.save_val_path +'log/')
     config.val_log_file = config.save_val_path +'log/' + 'val_' + os.path.basename(config.eval_source).replace('.', '-')  +'_' + exp_time +  '.log'
     config.link_val_log_file =  config.val_log_file
-    network = Network(config.num_classes, criterion=None, norm_layer=nn.BatchNorm2d)
+    if(args.only_c2p == False):
+        from network import Network
+        network = Network(config.num_classes, criterion=None, norm_layer=nn.BatchNorm2d)
+    else:
+        from network_c2p import Network
+        network = Network(config.num_classes, criterion=None, norm_layer=nn.BatchNorm2d)
+
     data_setting = {'img_root': config.dataset_path,
                     'gt_root': config.dataset_path,
                     'train_source': config.train_source,

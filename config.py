@@ -137,6 +137,7 @@ C.record_info_iter = 20
 C.display_iter = 50
 C.save_val_path = ""
 C.use_aspp = False
+C.only_c2p = False
 #--------c2pe hyper parameter
 C.lambda_s = 1 
 C.lambda_e =1
