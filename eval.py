@@ -162,6 +162,8 @@ if __name__ == "__main__":
     all_dev = parse_devices(args.devices)
     config.num_classes = args.cls + 1
     config.volna = r'J:\master_1_down\_thesis\code\main_workspace\AniSeg_Val\final_'+str(args.cls)+'_val'
+    #config.volna = r'J:\master_1_down\_thesis\code\main_workspace\AniSeg_Val\AniSeg_'+str(args.cls)
+    
     config.dataset_path = config.volna 
     config.eval_source = os.path.join(config.dataset_path, args.val_src)
     
@@ -201,4 +203,8 @@ if __name__ == "__main__":
                                     args.show_image,Epoch=e_num)   
             segmentor.run(config.snapshot_dir, args.epochs+e_num, config.val_log_file,
                         config.link_val_log_file)
-#python eval.py -d 0 -e .//epochs//0528_nc_re_a100// -val easy_val.txt --cls 12 -s
+#python eval.py -d 0 -e .//epochs//0522_12_ce2p_a100// -val easy_val.txt --cls 12 -s
+#python eval.py -d 0 -e .//epochs//0522_12_ce2p_a100// -val medium_val.txt --cls 12 -s
+#python eval.py -d 0 -e .//epochs//0522_12_ce2p_a100// -val hard_val.txt --cls 12 -s
+#python eval.py -d 0 -e .//epochs//0522_12_ce2p_a100// -val train_12_1017.txt --cls 12 -s
+#python eval.py -d 0 -e .//epochs//0528_16_ce2p_a100// -val train_16_1017.txt --cls 16 -s
