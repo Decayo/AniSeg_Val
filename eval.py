@@ -161,7 +161,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     all_dev = parse_devices(args.devices)
     config.num_classes = args.cls + 1
-    config.volna = r'J:\master_1_down\_thesis\code\main_workspace\AniSeg_Val\final_'+str(args.cls)+'_val'
+    config.volna = r'/content/AniSeg_Val/final_'+str(args.cls)+'_val'
     #config.volna = r'J:\master_1_down\_thesis\code\main_workspace\AniSeg_Val\AniSeg_'+str(args.cls)
     
     config.dataset_path = config.volna 
