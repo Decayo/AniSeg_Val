@@ -173,7 +173,7 @@ if __name__ == "__main__":
     exp_time = time.strftime('%Y_%m_%d_%H_%M_%S', time.localtime())
     if not os.path.exists( config.save_val_path +'log/'):
         os.makedirs( config.save_val_path +'log/')
-    config.val_log_file = config.save_val_path +'log/' + '/val_' + os.path.basename(config.eval_source).replace('.', '-')  +'_' + exp_time +  '.log'
+    config.val_log_file = config.save_val_path +'log/' + 'val_' + os.path.basename(config.eval_source).replace('.', '-')  +'_' + exp_time +  '.log'
     config.link_val_log_file =  config.val_log_file
     network = Network(config.num_classes, criterion=None, norm_layer=nn.BatchNorm2d)
     data_setting = {'img_root': config.dataset_path,
